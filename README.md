@@ -44,7 +44,7 @@ To setup your environment (specifically for MacOS, let us know if Windows or Lin
 
 Your environment is now setup. Clone this repository with the following command:
 
-	```git clone https://github.com/elliotBraem/all-eyes```
+	git clone https://github.com/elliotBraem/all-eyes
 
 
 ## Running the tests
