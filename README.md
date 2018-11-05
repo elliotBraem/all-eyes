@@ -81,7 +81,7 @@ TODO: Please read [CONTRIBUTING.md]() for details on our code of conduct, and th
 * **Natalie Brooks**
 * **Austen Baker**
 
-TODO: See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+TODO: See also the list of [contributors](https://github.com/elliotBraem/all-eyes/contributors) who participated in this project.
 
 ## License
 
