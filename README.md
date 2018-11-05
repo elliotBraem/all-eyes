@@ -23,28 +23,28 @@ To setup your environment (specifically for MacOS, let us know if Windows or Lin
 
 1. Create a virtual environment for OpenCV with the name all-eyes (optional, otherwise skip to step 3).
 
-	mkvirtualenv all-eyes -p python3
+	```mkvirtualenv all-eyes -p python3```
 
 2. Enter the environment.
 
-	workon all-eyes
+	```workon all-eyes```
 
 3. Install OpenCV (this will have to be done everytime upon entering the session).
 
-	pip install opencv-python
+	```pip install opencv-python```
 
 4. Check that OpenCV has been installed by running:
 
+	```python3
 	python3
-
-	import cv2 
-
+	import cv2
 	print(cv2.__version__)
+	```
 
 
 Your environment is now setup. Clone this repository with the following command:
 
-	git clone https://github.com/elliotBraem/all-eyes
+	```git clone https://github.com/elliotBraem/all-eyes```
 
 
 ## Running the tests
