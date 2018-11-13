@@ -8,9 +8,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-All-eyes is created with Python and [OpenCV](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup). If you do not have Python installed on your machine, please see [Python's Installation Guides](https://docs.python-guide.org/starting/installation/).
+All-eyes is created with Python and [OpenCV](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup).
+If you do not have Python installed on your machine, please see [Python's Installation Guides](https://docs.python-guide.org/starting/installation/).
 	
 
 ## Installing
