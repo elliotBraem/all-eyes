@@ -1,7 +1,5 @@
 import cv2
 import sys
-import dlib
-
 
 # Get user supplied values
 imagePath = sys.argv[1]
