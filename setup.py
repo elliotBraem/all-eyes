@@ -21,7 +21,7 @@ VERSION = None
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'cv2', 'dlib'
+    'opencv-python', 'dlib'
 ]
 
 # What packages are optional?
@@ -98,7 +98,6 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     author=AUTHOR,
-    author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
     packages=find_packages(exclude=('tests',)),
