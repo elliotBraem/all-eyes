@@ -36,20 +36,32 @@ for (i, rect) in enumerate(rects):
     shape = predictor(gray, rect)
     shape = face_utils.shape_to_np(shape)
 
-    # convert dlib's rectangle to a OpenCV-style bounding box
-    # [i.e., (x, y, w, h)], then draw the face bounding box
-    (x, y, w, h) = face_utils.rect_to_bb(rect)
-    cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 2)
+    # loop over the face parts individually
+    for (name, (i, j)) in face_utils.FACIAL_LANDMARKS_IDXS.items():
+        # clone the original image so we can draw on it, then
+        # display the name of the face part on the image
+        clone = img.copy()
+        cv2.putText(clone, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7, (0, 0, 255), 2)
 
-    # show the face number
-    cv2.putText(img, "Face #{}".format(i + 1), (x - 10, y - 10),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+        # loop over the subset of facial landmarks, drawing the
+        # specific face part
+        for (x, y) in shape[i:j]:
+            cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
 
-    # loop over the (x, y)-coordinates for the facial landmarks
-    # and draw them on the image
-    for (x, y) in shape:
-        cv2.circle(img, (x, y), 1, (0, 0, 255), -1)
+        # extract the ROI of the face region as a separate image
+        (x, y, w, h) = cv2.boundingRect(np.array([shape[i:j]]))
+        roi = img[y:y + h, x:x + w]
+        roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
 
-# show the output image with the face detections + facial landmarks
-cv2.imshow("Output", img)
+        # show the particular face part
+        cv2.imshow("ROI", roi)
+        cv2.imshow("Image", clone)
+        cv2.waitKey(0)
+
+    # visualize all facial landmarks with a transparent overlay
+    output = face_utils.visualize_facial_landmarks(img, shape)
+    cv2.imshow("Image", output)
+    cv2.waitKey(0)
+
 cv2.waitKey(0)
