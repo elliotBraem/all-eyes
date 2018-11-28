@@ -8,44 +8,27 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-All-eyes is created with Python and OpenCV.
-
+All-eyes is created with Python and [OpenCV](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup).
 If you do not have Python installed on your machine, please see [Python's Installation Guides](https://docs.python-guide.org/starting/installation/).
-
-If you do not have OpenCV-Python installed on your machine, read ahead to "Installing" or see [OpenCV-Python's Introduction to OpenCV](https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_setup/py_table_of_contents_setup/py_table_of_contents_setup.html#py-table-of-content-setup).
 	
 
 ## Installing
 
-To setup your environment (specifically for MacOS, let us know if Windows or Linux are different)
-
-1. Create a virtual environment for OpenCV with the name all-eyes (optional, otherwise skip to step 3).
-
-	```mkvirtualenv all-eyes -p python3```
-
-2. Enter the environment.
-
-	```workon all-eyes```
-
-3. Install OpenCV (this will have to be done everytime upon entering the session).
-
-	```pip install opencv-python```
-
-4. Check that OpenCV has been installed by running:
-
-	```python3
-	python3
-	import cv2
-	print(cv2.__version__)
-	```
-
-
-Your environment is now setup. Clone this repository with the following command:
-
+1. Clone this repository with the following command:
+```
 	git clone https://github.com/elliotBraem/all-eyes
+```
+	
+2. Optional: Create a virtual environment for OpenCV with the name all-eyes and enter the environment.
+```
+	mkvirtualenv all-eyes -p python3
+	workon all-eyes
+```
 
+3. Run setup.py to install the project and dependencies:
+```
+	python setup.py install
+```
 
 ## Running the tests
 
@@ -61,8 +44,7 @@ TODO: Create tests
 TODO: Add additional notes about how to deploy this on a live system
 
 ## Contributing
-
-TODO: Please read [CONTRIBUTING.md]() for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ### TODO:
 
