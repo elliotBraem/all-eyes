@@ -73,7 +73,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-TODO: 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Special thanks to Adrian Rosebrock of pyimagesearch
+face_detect.py is largly influenced by [his article](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/)
