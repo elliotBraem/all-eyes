@@ -36,32 +36,43 @@ for (i, rect) in enumerate(rects):
     shape = predictor(gray, rect)
     shape = face_utils.shape_to_np(shape)
 
-    # loop over the face parts individually
-    for (name, (i, j)) in face_utils.FACIAL_LANDMARKS_IDXS.items():
-        # clone the original image so we can draw on it, then
-        # display the name of the face part on the image
-        clone = img.copy()
-        cv2.putText(clone, name, (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                    0.7, (0, 0, 255), 2)
+    # clone the original image
+    clone = img.copy()
 
-        # loop over the subset of facial landmarks, drawing the
-        # specific face part
-        for (x, y) in shape[i:j]:
-            cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
+    # draw the right eye
+    for (x, y) in shape[36:42]:
+        cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
 
-        # extract the ROI of the face region as a separate image
-        (x, y, w, h) = cv2.boundingRect(np.array([shape[i:j]]))
-        roi = img[y:y + h, x:x + w]
-        roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
+    # extract the ROI of the face region as a separate image
+    (x, y, w, h) = cv2.boundingRect(np.array([shape[36:42]]))
+    roi = img[y:y + h, x:x + w]
+    roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
 
-        # show the particular face part
-        cv2.imshow("ROI", roi)
-        cv2.imshow("Image", clone)
-        cv2.waitKey(0)
-
-    # visualize all facial landmarks with a transparent overlay
-    output = face_utils.visualize_facial_landmarks(img, shape)
-    cv2.imshow("Image", output)
+    # show the particular face part
+    cv2.imshow("ROI", roi)
+    cv2.imshow("Image", clone)
     cv2.waitKey(0)
 
+    # clone the original image
+    clone = img.copy()
+
+    # draw the left eye
+    for (x, y) in shape[42:48]:
+        cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
+
+    # extract the ROI of the face region as a separate image
+    (x, y, w, h) = cv2.boundingRect(np.array([shape[42:48]]))
+    roi = img[y:y + h, x:x + w]
+    roi = imutils.resize(roi, width=250, inter=cv2.INTER_CUBIC)
+
+    # show the particular face part
+    cv2.imshow("ROI", roi)
+    cv2.imshow("Image", clone)
+    cv2.waitKey(0)
+
+#     # visualize all facial landmarks with a transparent overlay
+#     output = face_utils.visualize_facial_landmarks(img, shape)
+#     cv2.imshow("Image", output)
+#     cv2.waitKey(0)
+#
 cv2.waitKey(0)
