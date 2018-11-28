@@ -73,5 +73,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Special thanks to Adrian Rosebrock of pyimagesearch
-face_detect.py is largly influenced by [his article](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/)
+Special thanks to Adrian Rosebrock of pyimagesearch face_detect.py is largly influenced by his articles:
+* **[Facial landmarks with dlib, OpenCV, and Python](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/)**
+* **[Detect eyes, nose, lips, and jaw with dlib, OpenCV, and Python](https://www.pyimagesearch.com/2017/04/10/detect-eyes-nose-lips-jaw-dlib-opencv-python/)**
