@@ -21,7 +21,7 @@ VERSION = None
 
 # What packages are required for this module to be executed?
 REQUIRED = [
-    'opencv-python', 'dlib', 'imutils'
+    'opencv-python', 'dlib', 'imutils', 'spicy'
 ]
 
 # What packages are optional?

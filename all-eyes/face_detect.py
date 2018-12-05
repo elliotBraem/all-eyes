@@ -1,9 +1,29 @@
+# coding: utf-8
 from imutils import face_utils
+from scipy.spatial import distance as dist
 import numpy as np
 import argparse
 import imutils
 import dlib
 import cv2
+
+OPEN_THRESHOLD = 0.2
+
+def is_open(eye):
+    # euclidean distances between vertical pairs.
+    a = dist.euclidean(eye[1], eye[5])
+    b = dist.euclidean(eye[2], eye[4])
+
+    # euclidean distance between horizontal pair
+    c = dist.euclidean(eye[0], eye[3])
+
+    # compute the eye aspect ratio
+    ratio = (a + b) / (2.0 * c)
+
+    print(ratio)
+
+    # return the eye aspect ratio
+    return ratio >= OPEN_THRESHOLD
 
 # construct argument parser and parse the arguments
 # this may be changed to constants
@@ -43,6 +63,12 @@ for (i, rect) in enumerate(rects):
     for (x, y) in shape[36:42]:
         cv2.circle(clone, (x, y), 1, (0, 0, 255), -1)
 
+    left_eye = is_open(shape[36:42])
+    right_eye = is_open(shape[42:48])
+
+    print(left_eye)
+    print(right_eye)
+
     # extract the ROI of the face region as a separate image
     (x, y, w, h) = cv2.boundingRect(np.array([shape[36:42]]))
     roi = img[y:y + h, x:x + w]
@@ -71,8 +97,8 @@ for (i, rect) in enumerate(rects):
     cv2.waitKey(0)
 
 #     # visualize all facial landmarks with a transparent overlay
-#     output = face_utils.visualize_facial_landmarks(img, shape)
-#     cv2.imshow("Image", output)
-#     cv2.waitKey(0)
+#    output = face_utils.visualize_facial_landmarks(img, shape)
+#    cv2.imshow("Image", output)
+#    cv2.waitKey(0)
 #
 cv2.waitKey(0)
