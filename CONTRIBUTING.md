@@ -5,6 +5,19 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
+## Commit Semantics
+
+When committing to this repository, please practice these semantics for short and descriptive 
+messages:
+
+* feat: (new feature)
+* fix: (bug fix)
+* docs: (changes to documentation)
+* style: (formatting, syntax issues)
+* refactor: (renaming/adjustments of code, do not affect functionality)
+* test: (new tests)
+* chore: (grunt work, do not affect funcitonality)
+
 ## Pull Request Process
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a 
