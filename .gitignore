@@ -69,3 +69,10 @@ fabric.properties
 
 # Personal images
 all-eyes/resources/images/*
+
+# Egg
+all_eyes.egg-info/*
+
+# Misc
+.idea/other.xml
+.DS_Store
