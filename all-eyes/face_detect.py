@@ -38,6 +38,7 @@ class Face:
     eyes_open = True
 
 
+# takes a list of image objects and determines best base (number of faces with eyes open)
 def determine_base(image_objs):
     base = None
     num_open = 0
@@ -53,6 +54,7 @@ def determine_base(image_objs):
     return base
 
 
+# loads images from a folder and returns a list of these images
 def load_images(folder):
     images = []
     for filename in os.listdir(folder):
@@ -62,6 +64,7 @@ def load_images(folder):
     return images
 
 
+# if either eye is closed, we will determine that a swap is needed.
 def swap_needed(left_eye, right_eye):
     left_open = is_eye_open(left_eye)
     right_open = is_eye_open(right_eye)
@@ -72,6 +75,7 @@ def swap_needed(left_eye, right_eye):
         return False
 
 
+# determines if the eye is open or closed based on a ratio of top and bottom to sides of the eye
 def is_eye_open(eye):
     # euclidean distances between vertical pairs.
     a = dist.euclidean(eye[1], eye[5])
@@ -87,6 +91,7 @@ def is_eye_open(eye):
     return ratio >= OPEN_THRESHOLD
 
 
+# checks the center of the faces, if they are within the threshold to match, we return that they are the same.
 def matches(face1, face2):
     dif_center = dlib.rectangle.center(face1.face_position) - dlib.rectangle.center(face2.face_position)
     if abs(dif_center.x) > MATCH_DISTANCE:
@@ -97,6 +102,8 @@ def matches(face1, face2):
         return True
 
 
+# takes an image, overlay image, and bounds to draw overlay, places this over image
+# todo: make this better
 def blend(image, overlay, rect):
     x1 = rect.left()
     x2 = rect.right()
@@ -107,6 +114,7 @@ def blend(image, overlay, rect):
     return
 
 
+# creates a new rectangle shifted by a movement vector
 def shift_it(rect, vector):
     l = rect.left() + vector.x
     t = rect.top() + vector.y
@@ -116,20 +124,26 @@ def shift_it(rect, vector):
     return Rectangle(l, t, r, b)
 
 
+# performs a swap of a face onto the base face, gets a face with eyes closed and a matching face with eyes open
 def swap(base_face, face):
-    new_face = Face()
 
+    # create new face object, this will have same image as base_face for now.
+    new_face = Face()
     new_face.face_image = base_face.face_image
 
+    # find difference between left and right eye based on center
     left_dif = base_face.left_eye_rect.center() - face.left_eye_rect.center()
     right_dif = base_face.right_eye_rect.center() - face.right_eye_rect.center()
 
+    # create location of new eyes based on shape of new eyes and position of old eyes
     new_left_location = shift_it(face.left_eye_rect, left_dif)
     new_right_location = shift_it(face.right_eye_rect, right_dif)
 
+    # draw the new eyes onto the new face
     blend(new_face.face_image, face.left_eye_image, new_left_location)
     blend(new_face.face_image, face.right_eye_image, new_right_location)
 
+    # set data for new face and return
     new_face.face_position = base_face.face_position
     new_face.eyes_open = True
     new_face.left_eye_rect = new_left_location
@@ -150,18 +164,19 @@ def do_swaps(base_image, images):
             # look through images to find replacement
             for image_obj in images:
 
-                # only calling a match if they have same number of faces, this can be commented out i guess.
+                # only calling a match if they have same number of faces, this could be removed
                 if len(image_obj.faces) == len(base_image.faces):
                     for face_obj in image_obj.faces:
-                        if matches(base_face_obj, face_obj):
-                            if face_obj.eyes_open is True:
-                                new_face_obj = swap(base_face_obj, face_obj)
+                        # if the faces are a match and replaement has eyes open
+                        if matches(base_face_obj, face_obj) and face_obj.eyes_open is True:
+                            new_face_obj = swap(base_face_obj, face_obj)
 
-                                #draw new face on image below
-                                blend(base_image.image, new_face_obj.face_image, new_face_obj.face_position)
-                                break
+                            # draw new face on image below
+                            blend(base_image.image, new_face_obj.face_image, new_face_obj.face_position)
+                            break
 
 
+# takes an image and creates a face object to be used for swapping
 def create_object_from_image(image, detector, predictor):
     current_object = Image()
     current_object.image = image
@@ -186,9 +201,7 @@ def create_object_from_image(image, detector, predictor):
         shape = predictor(gray, rect)
         shape = face_utils.shape_to_np(shape)
 
-        # clone the original image
-        #    clone = img.copy()
-
+        # face position on original image
         face_object.face_position = rect
 
         (x, y, w, h) = face_utils.rect_to_bb(rect)
@@ -202,13 +215,16 @@ def create_object_from_image(image, detector, predictor):
 
         (x, y, w, h) = cv2.boundingRect(np.array(left_eye))
         face_object.left_eye_image = image[y:y + h, x:x + w]
+
+        # todo just use shiftit for this...
         face_object.left_eye_rect = Rectangle(x - face_object.face_position.left(),
-                                               y - face_object.face_position.top(),
-                                               x + w - face_object.face_position.left(),
-                                               y + h - face_object.face_position.top())
+                                                y - face_object.face_position.top(),
+                                                x + w - face_object.face_position.left(),
+                                                y + h - face_object.face_position.top())
 
         (x, y, w, h) = cv2.boundingRect(np.array(right_eye))
         face_object.right_eye_image = image[y:y + h, x:x + w]
+        # todo and this
         face_object.right_eye_rect = Rectangle(x - face_object.face_position.left(),
                                                y - face_object.face_position.top(),
                                                x + w - face_object.face_position.left(),
@@ -253,5 +269,5 @@ else:
 
 do_swaps(base_image, image_objects)
 
-cv2.imshow("ok", base_image.image)
+cv2.imshow("Finished", base_image.image)
 cv2.waitKey(0)
