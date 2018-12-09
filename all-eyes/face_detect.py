@@ -1,5 +1,6 @@
 from imutils import face_utils
 from scipy.spatial import distance as dist
+from dlib import rectangle as Rectangle
 import numpy as np
 import argparse
 import imutils
@@ -9,14 +10,16 @@ import cv2
 
 OPEN_THRESHOLD = 0.2
 PREDICTOR_PATH = "resources/shape_predictor_68_face_landmarks.dat"
+MATCH_DISTANCE = 30
 
 
 class Image:
     def __init__(self):
         pass
 
+    name = None
     image = None
-    faces = None
+    faces = []
 
 
 class Face:
@@ -28,9 +31,11 @@ class Face:
     face_image = None
     left_eye_position = None
     right_eye_position = None
+    left_eye_rect = None
+    right_eye_rect = None
     face_position = None
 
-    eyes_open = None
+    eyes_open = True
 
 
 def determine_base(image_objs):
@@ -82,12 +87,87 @@ def is_eye_open(eye):
     return ratio >= OPEN_THRESHOLD
 
 
+def matches(face1, face2):
+    dif_center = dlib.rectangle.center(face1.face_position) - dlib.rectangle.center(face2.face_position)
+    if abs(dif_center.x) > MATCH_DISTANCE:
+        return False
+    elif abs(dif_center.y) > MATCH_DISTANCE:
+        return False
+    else:
+        return True
+
+
+def blend(image, overlay, rect):
+    x1 = rect.left()
+    x2 = rect.right()
+    y1 = rect.top()
+    y2 = rect.bottom()
+
+    image[y1:y2, x1:x2] = overlay
+    return
+
+
+def shift_it(rect, vector):
+    l = rect.left() + vector.x
+    t = rect.top() + vector.y
+    r = rect.right() + vector.x
+    b = rect.bottom() + vector.y
+
+    return Rectangle(l, t, r, b)
+
+
+def swap(base_face, face):
+    new_face = Face()
+
+    new_face.face_image = base_face.face_image
+
+    left_dif = base_face.left_eye_rect.center() - face.left_eye_rect.center()
+    right_dif = base_face.right_eye_rect.center() - face.right_eye_rect.center()
+
+    new_left_location = shift_it(face.left_eye_rect, left_dif)
+    new_right_location = shift_it(face.right_eye_rect, right_dif)
+
+    blend(new_face.face_image, face.left_eye_image, new_left_location)
+    blend(new_face.face_image, face.right_eye_image, new_right_location)
+
+    new_face.face_position = base_face.face_position
+    new_face.eyes_open = True
+    new_face.left_eye_rect = new_left_location
+    new_face.right_eye_rect = new_right_location
+    new_face.left_eye_image = face.left_eye_image
+    new_face.right_eye_image = face.right_eye_image
+
+    return new_face
+
+
+# returns a 2d matrix with the first index of each being the base_image image and the rest
+# as matched faces to that image
+def do_swaps(base_image, images):
+    # loop through faces in base image looking for replacements
+    for base_face_obj in base_image.faces:
+        if not base_face_obj.eyes_open:
+
+            # look through images to find replacement
+            for image_obj in images:
+
+                # only calling a match if they have same number of faces, this can be commented out i guess.
+                if len(image_obj.faces) == len(base_image.faces):
+                    for face_obj in image_obj.faces:
+                        if matches(base_face_obj, face_obj):
+                            if face_obj.eyes_open is True:
+                                new_face_obj = swap(base_face_obj, face_obj)
+
+                                #draw new face on image below
+                                blend(base_image.image, new_face_obj.face_image, new_face_obj.face_position)
+                                break
+
+
 def create_object_from_image(image, detector, predictor):
     current_object = Image()
     current_object.image = image
 
     # resize it
-    image = imutils.resize(image, width=500)
+    # image = imutils.resize(image, width=500)
 
     # convert to grayscale
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -114,17 +194,25 @@ def create_object_from_image(image, detector, predictor):
         (x, y, w, h) = face_utils.rect_to_bb(rect)
         face_object.face_image = image[y:y + h, x:x + w]
 
-        left_eye = shape[42:48]
-        right_eye = shape[36:42]
+        right_eye = shape[42:48]
+        left_eye = shape[36:42]
 
         face_object.left_eye_position = left_eye
         face_object.right_eye_position = right_eye
 
         (x, y, w, h) = cv2.boundingRect(np.array(left_eye))
         face_object.left_eye_image = image[y:y + h, x:x + w]
+        face_object.left_eye_rect = Rectangle(x - face_object.face_position.left(),
+                                               y - face_object.face_position.top(),
+                                               x + w - face_object.face_position.left(),
+                                               y + h - face_object.face_position.top())
 
         (x, y, w, h) = cv2.boundingRect(np.array(right_eye))
         face_object.right_eye_image = image[y:y + h, x:x + w]
+        face_object.right_eye_rect = Rectangle(x - face_object.face_position.left(),
+                                               y - face_object.face_position.top(),
+                                               x + w - face_object.face_position.left(),
+                                               y + h - face_object.face_position.top())
 
         if swap_needed(left_eye, right_eye):
             face_object.eyes_open = False
@@ -132,7 +220,7 @@ def create_object_from_image(image, detector, predictor):
             face_object.eyes_open = True
 
         image_faces.append(face_object)
-        current_object.faces = image_faces
+    current_object.faces = image_faces
     return current_object
 
 
@@ -163,12 +251,7 @@ if args["base_image"] is not None:
 else:
     base_image = determine_base(image_objects)
 
+do_swaps(base_image, image_objects)
+
 cv2.imshow("ok", base_image.image)
 cv2.waitKey(0)
-
-# if images is not None:
-#    output = begin(images, base_image)
-#    cv2.imshow("Output", output)
-#    cv2.waitKey(0)
-# else:
-#    print("No images in given source folder.")
