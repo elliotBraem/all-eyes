@@ -50,11 +50,11 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 - [X] Locate a face in an image
 - [X] Locate the eyes on a face
-- [ ] Preliminary eye matching
+- [X] Preliminary eye matching
 - [X] Preliminary open/closed implementation
-- [ ] Distinguish between closed eyes and open eyes
-- [ ] Identify the same set of eyes (open or closed) in the image sequence
-- [ ] Apply the replacement to the closed eyes
+- [X] Distinguish between closed eyes and open eyes
+- [X] Identify the same set of eyes (open or closed) in the image sequence
+- [X] Apply the replacement to the closed eyes
 - [ ] Correct and shadow (In-paint) the replacement to match the image
 
 Misc:
