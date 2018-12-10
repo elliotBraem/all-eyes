@@ -70,8 +70,8 @@ Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-
 
 
 ## Results
+[Presentation](https://docs.google.com/presentation/d/1sczYU9fbb02LyJrjiifcD8XKOPWxBFJg4SAKT955yOE/edit?usp=sharing)
 Final product:
-
 
 ## The Team
 #### **Elliot Braem**  
