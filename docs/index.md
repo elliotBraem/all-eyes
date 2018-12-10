@@ -26,7 +26,23 @@ In a photo, closed eyes can occur for a number of reasons, such as the blinding 
 
 
 ## State of the Art
-...
+#### **Facebook’s Eye In-Painting with Exemplar Generative Adversarial Networks**
+
+Facebook’s Eye In-Painting technique utilizes in-painting as a backbone for a sophisticated system of machine learning that occurs through the interaction of two processes. In-painting is a process that synthesizes patches for holes in an image using the pixels around it. It can be used to help smooth out an image and make the different components of it consistent with one another. Facebook’s version of in-painting is an algorithm that breaks down the image into structural and textural components, which are then used to aid in constructing patches for holes that will be consistent with the rest of the image (in terms of lighting, color, contrast, etc.). Facebook replaces the closed eyes with open eyes from another image of the same person, then uses two processes to perform the in-painting. One process constructs the patches while another process checks how realistic the patches are by referencing a bank of pictures.
+
+See references: [Facebook Eye In-Painting Paper](https://research.fb.com/wp-content/uploads/2018/06/Eye-In-Painting-with-Exemplar-Generative-Adversarial-Networks.pdf) and [Forbes Article on Facebook Eye In-Painting](https://www.forbes.com/sites/paulmonckton/2018/06/21/how-facebook-can-open-your-eyes/#65235a5a6d16).
+
+#### **Adobe Photoshop’s “Open Closed Eyes” Feature**
+
+Photoshop’s “Open Closed Eyes” element is a procedure that requires quite a few steps and is essentially a direct cut-and-paste method with in-painting. The user identifies a closed eye, then chooses a .png image (in this case, a cutout of eyes) to copy from where a person’s eyes are open. The open eyes then replace the closed eyes and Photoshop performs its own in-painting to make the result appear realistic. This method is relatively inflexible, in the sense that eyes taken from a picture that were not in the same lighting or from exactly the same angle may not look realistic or consistent with the structure/texture of the rest of the image after in-painting.
+
+See references: [Essential Photoshop Elements: Open Closed Eyes Tutorial](https://www.essential-photoshop-elements.com/open-closed-eyes-with-Photoshop-Elements-2018.html) and [Digital Photography for Moms: Open Closed Eyes Tutorial](https://www.digitalphotographyformoms.com/open-closed-eyes-in-photoshop-elements-quick-tip/).
+
+#### **Google’s “Image Cache for Replacing Portions of Images”**
+
+Google’s approach is much like that of Photoshop’s, in that it uses a cut-and-paste method, where the closed eyes are overlaid with clipped open eyes taken from another picture. However; since Google’s method builds its image database automatically from all a person’s pictures, the database is much more comprehensive and can be searched through much more efficiently for an optimal clipping. Of course, the best optimization of this method relies on a person’s image database to be considerably large in order for there to be enough options, and at worst, it has the same results as Photoshop, but is faster and less complicated to use.
+
+See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google).
 
 
 ## Project Flow
@@ -92,6 +108,10 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 ![Eye Point Formula](formula.jpg)
 
 TBC
+
+![6 Critical Eye Points](close_eye_detect.jpg)
+
+
 
 ## The Solution
 
