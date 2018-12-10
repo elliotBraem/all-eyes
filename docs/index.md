@@ -8,6 +8,8 @@
 
 [Project Flow](#project-flow)
 
+[Timeline](#timeline)
+
 [Implementation](#implementation)
 
 [Results](#results)
@@ -88,7 +90,7 @@ email: cbwaity@wisc.edu
 email: natalierose7465@gmail.com  
 
 #### **Austen Baker**  
-![Austin Not Looking Horrific](austin.jpg)
+![Austin Not Looking Horrific](austin.jpg)  
 *Computer Science major, graduating 2020*  
 email: austenbaker225@gmail.com  
 
