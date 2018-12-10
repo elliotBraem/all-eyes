@@ -50,7 +50,7 @@ See references: [What a Future: Google Photos New Feature](http://www.whatafutur
 
 
 ## Project Flow
-![Project Flow Diagram](img/process/diagram.png)
+![Project Flow Diagram](img/team/diagram.png)
 
 
 ## Timeline
