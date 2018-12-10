@@ -50,12 +50,12 @@ See references: [What a Future: Google Photos New Feature](http://www.whatafutur
 
 
 ## Timeline
-| Task                                                  | Target Date |  
-| :---                                                  | ---: |  
-| Locate a face in an image                             | X |  
-| Locate the eyes on a face                             | X |  
-| Preliminary eye matching                              | X |
-| Distinguish between closed and opened eyes            | November 5th |
+| Task                                                  | Target Date   |
+| ----                                                  | ---:          |
+| Locate a face in an image                             | X             |
+| Locate the eyes on a face                             | X             |
+| Preliminary eye matching                              | X             |
+| Distinguish between closed and opened eyes            | November 5th  |
 | Identify the same set of eyes in the image sequence   | November 15th |
 | Apply the replacement to the closed eyes              | November 20th |
 | In-Paint the replacement to match the image           | November 30th |
