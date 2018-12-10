@@ -74,22 +74,22 @@ Link to project presentation slides [here](https://docs.google.com/presentation/
 
 ## The Team
 #### **Elliot Braem**  
-![Elliot Looking Horrific](elliot.jpg)  
+![Elliot Looking Horrific](img/team/elliot.jpg)  
 *Computer Science major, graduating 2019*  
 email: braemelliot@gmail.com  
 
 #### **Connor Waity**  
-![Connor Looking Horrific](connor.jpg)  
+![Connor Looking Horrific](img/team/connor.jpg)  
 *Computer Science major, graduating UP YOUR BUTT*  
 email: cbwaity@wisc.edu  
 
 #### **Natalie Brooks**  
-![Natalie Looking Horrific](natalie.jpg)  
+![Natalie Looking Horrific](img/team/natalie.jpg)  
 *Computer Science major, graduating 2019*  
 email: natalierose7465@gmail.com  
 
 #### **Austen Baker**  
-![Austin Not Looking Horrific](austin.jpg)  
+![Austin Not Looking Horrific](img/team/austin.jpg)  
 *Computer Science major, graduating 2020*  
 email: austenbaker225@gmail.com  
 
@@ -97,11 +97,11 @@ email: austenbaker225@gmail.com
 ## The Process
 #### **Initial Face Detection**
 
-![Faces Detected](initial_detection.jpg)
+![Faces Detected](img/process/initial_detection.jpg)
 
 In order to get a feel for the project, we first implemented a preliminary face detection using Haar Cascade, as provided by Python OpenCV. Haar Cascade is based on the Viola-Jones Object Detection Algorithm, which is trained a large set of positives and negatives, then uses certain features to determine if an object is detected. The detectMuliScale parameter must be tuned in order to detect all objects in an image, but does not always work from image-to-image.
 
-![Simple Features](features.jpg)
+![Simple Features](img/process/features.jpg)
 
 In most cases, Haar Cascade was able to detect all of the faces in a given image, however, false positives were also common. Moreover, because eyes are more abstract and less clear than faces, the Haar Cascade failed to detect them most of the time.
 
@@ -110,25 +110,25 @@ See tutorial for Haar Cascade as provided by Python OpenCV [here](https://docs.o
 
 #### **Superior Facial Detection with dlib**
 
-![dlib Facial Detection](dlib_detection.jpg)
+![dlib Facial Detection](img/process/dlib_detection.jpg)
 
 In order to improve accuracy, we converted to a HOG-Based face detection which proved to be more robust in detecting faces and had less false-positives. Once the face is detected, we use a predictor to identify facial features. It identifies facial features relative to their position on the face and is much more reliable since, for every face detected, two eyes are always detected as well.
 
-![dlib Facial Landmarks](feature_points.jpg)
+![dlib Facial Landmarks](img/process/feature_points.jpg)
 
 See tutorial for dlib's facial landmark detector [here](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/).
 
 #### **Open/Closed Eye Detection**
 
-![Open/Closed Eye Detection](open_eye_detect.jpg)
+![Open/Closed Eye Detection](img/process/open_eye_detect.jpg)
 
 Given dlib's six point eye area, we are able to determine whether an eye is open or not based on the ratio of the top of the eye to the bottom. Given formula and re ....... ????
 
-![Eye Point Formula](formula.jpg)
+![Eye Point Formula](img/process/formula.jpg)
 
 TBC
 
-![6 Critical Eye Points](close_eye_detect.jpg)
+![6 Critical Eye Points](img/process/close_eye_detect.jpg)
 
 
 
