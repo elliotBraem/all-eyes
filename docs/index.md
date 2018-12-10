@@ -22,7 +22,9 @@
 
 
 ## Motivation
-In a photo, closed eyes can occur for a number of reasons, such as the blinding light of a camera’s flash, a mistimed blink, or some other unexpected event. A single individual with closed eyes greatly reduces the picture’s quality and worth, prompting a retake. However, retaking the picture doesn’t ensure that all eyes will be open; a retake is just as much at risk as the initial image. All-eyes attempts to solve this problem using face and closed eye detection, local images, and in-painting to achieve a natural, low cost replacement.
+In a photo, closed eyes can occur for a number of reasons, such as the blinding light of a camera’s flash, a mistimed blink, or some other unexpected event. A single individual with closed eyes greatly reduces the picture’s quality, usually prompting a retake. However, retaking the picture does not ensure that all eyes will be open; a retake is just as prone to mistakes as the initial image. All-eyes attempts to solve this problem using face and closed eye detection, local images, and in-painting to achieve a natural, low cost replacement.
+
+Especially juxtaposed with other state of the art options, our solution is quick and easy, and does not require a huge bank of photos or complicated and time consuming AI functionality. We would call it the 'perfect balance' between cost and effectiveness.
 
 
 ## State of the Art
@@ -42,7 +44,7 @@ See references: [Essential Photoshop Elements: Open Closed Eyes Tutorial](https:
 
 Google’s approach is much like that of Photoshop’s, in that it uses a cut-and-paste method, where the closed eyes are overlaid with clipped open eyes taken from another picture. However; since Google’s method builds its image database automatically from all a person’s pictures, the database is much more comprehensive and can be searched through much more efficiently for an optimal clipping. Of course, the best optimization of this method relies on a person’s image database to be considerably large in order for there to be enough options, and at worst, it has the same results as Photoshop, but is faster and less complicated to use.
 
-See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google)).
+See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google))).
 
 
 ## Project Flow
@@ -70,19 +72,23 @@ Final product:
 
 
 ## The Team
-**Elliot Braem**  
+#### **Elliot Braem**  
+![Elliot Looking Horrific](elliot.jpg)  
 *Computer Science major, graduating 2019*  
 email: braemelliot@gmail.com  
 
-**Connor Waity**  
-*Computer Science major, graduating ???*  
+#### **Connor Waity**  
+![Connor Looking Horrific](connor.jpg)  
+*Computer Science major, graduating UP YOUR BUTT*  
 email: cbwaity@wisc.edu  
 
-**Natalie Brooks**  
+#### **Natalie Brooks**  
+![Natalie Looking Horrific](natalie.jpg)  
 *Computer Science major, graduating 2019*  
 email: natalierose7465@gmail.com  
 
-**Austen Baker**  
+#### **Austen Baker**  
+![Austin Not Looking Horrific](austin.jpg)
 *Computer Science major, graduating 2020*  
 email: austenbaker225@gmail.com  
 
@@ -127,6 +133,10 @@ TBC
 
 ## The Solution
 
+TODO
+
 
 ## Plans for Improvement
-There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be superimposed then in-painted as well. 
+There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes with our project.
+
+Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes.
