@@ -42,12 +42,23 @@ See references: [Essential Photoshop Elements: Open Closed Eyes Tutorial](https:
 
 Google’s approach is much like that of Photoshop’s, in that it uses a cut-and-paste method, where the closed eyes are overlaid with clipped open eyes taken from another picture. However; since Google’s method builds its image database automatically from all a person’s pictures, the database is much more comprehensive and can be searched through much more efficiently for an optimal clipping. Of course, the best optimization of this method relies on a person’s image database to be considerably large in order for there to be enough options, and at worst, it has the same results as Photoshop, but is faster and less complicated to use.
 
-See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google).
+See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google)).
 
 
 ## Project Flow
 ![Project Flow Diagram](diagram.jpeg)
 
+
+## Timeline
+| Task                                                  | Target Date |  
+| :---                                                  | ---: |  
+| Locate a face in an image                             | X |  
+| Locate the eyes on a face                             | X |  
+| Preliminary eye matching                              | X |
+| Distinguish between closed and opened eyes            | November 5th |
+| Identify the same set of eyes in the image sequence   | November 15th |
+| Apply the replacement to the closed eyes              | November 20th |
+| In-Paint the replacement to match the image           | November 30th |
 
 ## Implementation
 Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes)
