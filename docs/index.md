@@ -11,13 +11,15 @@ In a photo, closed eyes can occur for a number of reasons, such as the blinding 
 Especially juxtaposed with other state of the art options, our solution is quick and easy, and does not require a huge bank of photos or complicated and time consuming AI functionality. We would call it the 'perfect balance' between cost and effectiveness.
 
 ## Project Flow
-![Project Flow Diagram](img/procecss/project-flow.png)
+![Project Flow Diagram](img/process/project-flow.png)
 
 ## Implementation
 Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes).
 
 ## Results
-Link to project presentation slides [here](https://docs.google.com/presentation/d/1sczYU9fbb02LyJrjiifcD8XKOPWxBFJg4SAKT955yOE/edit?usp=sharing).
+
+![Results Image, Team](img/results/results-team.png)
+![Results Image, Two Girls](img/results/results-two-girls.png)
 
 ## The Team
 
@@ -95,6 +97,10 @@ TBC
 ![6 Critical Eye Points](img/process/close_eye_detect.jpg)
 
 
+
+![Connor Eyes Replaced](img/process/connor-replacement.png)
+
+![Initial inpainting](img/process/inpainting-man.png)
 
 ## The Solution
 
