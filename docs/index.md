@@ -14,7 +14,9 @@ Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-
 
 ## Results
 
+Using an image with eyes closed as the base image (top left), our program locates an image witheyes open (bottom left), replaces the closed eyes in the base image with the open eyes (top right), then inpaints the replacement eyes to attempt a natural look (bottom right).
 ![Results Image, Team](img/results/results-team.png)
+In some cases, the intial eye replacement looks more natural than the inpainting. This can be improved upon.
 ![Results Image, Two Girls](img/results/results-two-girls.png)
 
 ## The Team
