@@ -30,18 +30,19 @@ If you do not have Python installed on your machine, please see [Python's Instal
 	python setup.py install
 ```
 
-## Running the tests
+## Usage
 
-TODO: Create tests
-TODO: Explain how to run the automated tests for this system
+After installing the project:
 
-### Break down into end to end tests
+1. Place multiple retakes of the same group picture in the directory:
+```
+	all-eyes/resources/images
+```
 
-TODO: Create tests
-
-## Deployment
-
-TODO: Add additional notes about how to deploy this on a live system
+2. Run the following command:
+```
+	python face_detect.py [-b base image]
+```
 
 ## Contributing
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
@@ -55,7 +56,8 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 - [X] Distinguish between closed eyes and open eyes
 - [X] Identify the same set of eyes (open or closed) in the image sequence
 - [X] Apply the replacement to the closed eyes
-- [ ] Correct and shadow (In-paint) the replacement to match the image
+- [X] Inpaint the replacment eye
+- [ ] Improved, natural inpainting
 
 Misc:
 - [ ] auto inject resources/shape_predictor_68_face_landmarks.dat
@@ -66,7 +68,7 @@ Misc:
 * **Natalie Brooks**
 * **Austen Baker**
 
-TODO: See also the list of [contributors](https://github.com/elliotBraem/all-eyes/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/elliotBraem/all-eyes/contributors) who participated in this project.
 
 ## License
 
@@ -74,6 +76,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Special thanks to Adrian Rosebrock of pyimagesearch face_detect.py is largly influenced by his articles:
+Special thanks to Adrian Rosebrock of pyimagesearch. Aspects of this project are largly influenced by his articles:
 * **[Facial landmarks with dlib, OpenCV, and Python](https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/)**
 * **[Detect eyes, nose, lips, and jaw with dlib, OpenCV, and Python](https://www.pyimagesearch.com/2017/04/10/detect-eyes-nose-lips-jaw-dlib-opencv-python/)**
