@@ -11,7 +11,7 @@ In a photo, closed eyes can occur for a number of reasons, such as the blinding 
 Especially juxtaposed with other state of the art options, our solution is quick and easy, and does not require a huge bank of photos or complicated and time consuming AI functionality. We would call it the 'perfect balance' between cost and effectiveness.
 
 ## Project Flow
-![Project Flow Diagram](img/procecss/diagram.png)
+![Project Flow Diagram](img/procecss/project-flow.png)
 
 ## Implementation
 Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes).
