@@ -1,5 +1,5 @@
 ## Contents
-[Motivation](#motivation) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art)| [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
+[Motivation](#motivation) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art) | [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
 
 
 ## Motivation
