@@ -94,6 +94,13 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 ![6 Critical Eye Points](img/process/close_eye_detect.jpg)
 
 
+#### **Replacing the Eyes**
+
+Several steps were necessary to allow us to achieve our end goal of finding and replacing closed eyes. After finding all the faces in the base image, and determining the faces with closed eyes that needed to be swapped. All faces in the images in the source directory were also analyzed and stored in a matrix. We used the similarity of these images and the locations of the faces to determine suitable matches for closed and open eyes.
+
+Once a match is found we took the eyes from the open eye image, and placed them in a sensible place on the base image, we tried many approaches to make this look natrual and produce consistent results, and were ultimately only moderately successful with this. While we were able to consistently determine closed/open eyes, locate, and match faces, placing and painting them onto the new image proved to be a relatively difficult task where we had varying degrees of success.
+
+We used several methods of actually placing the eyes on the new face, from just simply putting the pixels of the new eyes on the base image, and using blur, masking, and blending methods to allow this to look more natrual. There were some images where certain strategies worked better and more consistently, and others where they did not. All in all this was a learning process that could definitely be improved, and provided a great insight into the intricicies of making believable and seamless modifications to an image.
 
 ![Connor Eyes Replaced](img/process/connor-replacement.png)
 
@@ -102,4 +109,8 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 ## Plans for Improvement
 There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes with our project.
 
-Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes.
+Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes. We believe that we could spend a lot more time, and iteratively improve our process in order to continually make improvements to the consistency and believability of our applications replacement painting.
+
+Given more time we would have loved to implement a mesh face or triangulation of key points to allow us to even more accurately place eyes. This was attempted and worked on during our development but set aside for other features and not finished before the deadline. Doing this would improve our current applications eye placement, as well as allow us to use different source images when finding and replacing eyes. 
+
+
