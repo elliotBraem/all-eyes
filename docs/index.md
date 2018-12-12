@@ -1,6 +1,3 @@
-# all eyes
-#### *A python application able to detect and replace closed eyes in an image*
-
 ## Contents
 [Motivation](#motivation) | [Project Flow](#project-flow)  | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art)| [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
 
