@@ -34,7 +34,7 @@ If you do not have Python installed on your machine, please see [Python's Instal
 
 After installing the project:
 
-1. Place multiple retakes of the same group picture in the directory:
+1. Place multiple retakes of the same group picture in the directory (or provide custom path in next step):
 ```
 	all-eyes/resources/images
 ```
