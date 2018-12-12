@@ -2,25 +2,7 @@
 #### *A python application able to detect and replace closed eyes in an image*
 
 ## Contents
-[Motivation](#motivation)
-
-[State of the Art](#state-of-the-art)
-
-[Project Flow](#project-flow)
-
-[Timeline](#timeline)
-
-[Implementation](#implementation)
-
-[Results](#results)
-
-[The Team](#the-team)
-
-[The Process](#the-process)
-
-[The Solution](#the-solution)
-
-[Plans for Improvement](#plans-for-improvement)
+[Motivation](#motivation) | [State of the Art](#state-of-the-art) | [Project Flow](#project-flow) | [Timeline](#timeline) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [The Process](#the-process) | [The Solution](#the-solution) | [Plans for Improvement](#plans-for-improvement)
 
 
 ## Motivation
@@ -28,6 +10,34 @@ In a photo, closed eyes can occur for a number of reasons, such as the blinding 
 
 Especially juxtaposed with other state of the art options, our solution is quick and easy, and does not require a huge bank of photos or complicated and time consuming AI functionality. We would call it the 'perfect balance' between cost and effectiveness.
 
+## Project Flow
+![Project Flow Diagram](img/procecss/diagram.png)
+
+## Implementation
+Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes).
+
+## Results
+Link to project presentation slides [here](https://docs.google.com/presentation/d/1sczYU9fbb02LyJrjiifcD8XKOPWxBFJg4SAKT955yOE/edit?usp=sharing).
+
+## The Team
+
+**Elliot Braem** | **Connor Waity** | **Natalie Brooks** | **Austen Baker** |
+------------ | ------------- | ------------ | -------------
+![Elliot Looking Horrific](img/team/elliot.jpg)  | ![Connor Looking Horrific](img/team/connor.jpg) | ![Natalie Looking Horrific](img/team/natalie.jpg)  | ![Austin Not Looking Horrific](img/team/austin.jpg)
+*Computer Science, graduating 2019* | *Computer Science, graduating 2020* | *Computer Science, graduating 2019*  | *Computer Science, graduating 2020*
+elliot@brae.me | cbwaity@wisc.edu | natalierose7465@gmail.com | austenbaker225@gmail.com
+
+## Timeline
+
+| Task | Time |
+| :--- | ---: |
+| Locate a face in an image | Early Oct |
+| Locate the eyes on a face | Early Oct |
+| Preliminary eye matching | Late Oct |
+| Distinguish between closed and opened eyes | Early Nov |
+| Identify the same set of eyes in the image sequence | Early Nov |
+| Apply the replacement to the closed eyes | Mid Nov |
+| In-Paint the replacement to match the image | Late Nov |
 
 ## State of the Art
 #### **Facebook’s Eye In-Painting with Exemplar Generative Adversarial Networks**
@@ -47,52 +57,6 @@ See references: [Essential Photoshop Elements: Open Closed Eyes Tutorial](https:
 Google’s approach is much like that of Photoshop’s, in that it uses a cut-and-paste method, where the closed eyes are overlaid with clipped open eyes taken from another picture. However; since Google’s method builds its image database automatically from all a person’s pictures, the database is much more comprehensive and can be searched through much more efficiently for an optimal clipping. Of course, the best optimization of this method relies on a person’s image database to be considerably large in order for there to be enough options, and at worst, it has the same results as Photoshop, but is faster and less complicated to use.
 
 See references: [What a Future: Google Photos New Feature](http://www.whatafuture.com/google-photos-new-feature/) and [US Patent and Trademark Office: "Image Cache for Replacing Portions of Images](http://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&u=%2Fnetahtml%2FPTO%2Fsearch-adv.html&r=16&p=1&f=G&l=50&d=PG01&S1=(20170413.PD.+AND+(Google.AS.+OR+Google.AANM.))&OS=PD/04/13/2017+AND+(AN/Google+OR+AANM/Google)&RS=(PD/20170413+AND+(AN/Google+OR+AANM/Google))).
-
-
-## Project Flow
-![Project Flow Diagram](img/team/diagram.png)
-
-
-## Timeline
-
-| Task | Target Date |
-| :--- | ---: |
-| Locate a face in an image | X |
-| Locate the eyes on a face | X |
-| Preliminary eye matching | X |
-| Distinguish between closed and opened eyes | November 5th |
-| Identify the same set of eyes in the image sequence | November 15th |
-| Apply the replacement to the closed eyes | November 20th |
-| In-Paint the replacement to match the image | November 30th |
-
-## Implementation
-Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes).
-
-
-## Results
-Link to project presentation slides [here](https://docs.google.com/presentation/d/1sczYU9fbb02LyJrjiifcD8XKOPWxBFJg4SAKT955yOE/edit?usp=sharing).
-
-## The Team
-#### **Elliot Braem**  
-![Elliot Looking Horrific](img/team/elliot.jpg)  
-*Computer Science major, graduating 2019*  
-email: braemelliot@gmail.com  
-
-#### **Connor Waity**  
-![Connor Looking Horrific](img/team/connor.jpg)  
-*Computer Science major, graduating UP YOUR BUTT*  
-email: cbwaity@wisc.edu  
-
-#### **Natalie Brooks**  
-![Natalie Looking Horrific](img/team/natalie.jpg)  
-*Computer Science major, graduating 2019*  
-email: natalierose7465@gmail.com  
-
-#### **Austen Baker**  
-![Austin Not Looking Horrific](img/team/austin.jpg)  
-*Computer Science major, graduating 2020*  
-email: austenbaker225@gmail.com  
-
 
 ## The Process
 #### **Initial Face Detection**
@@ -135,6 +99,8 @@ TBC
 ## The Solution
 
 TODO
+
+
 
 
 ## Plans for Improvement
