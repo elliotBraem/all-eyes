@@ -1,8 +1,5 @@
-# all eyes
-#### *A python application able to detect and replace closed eyes in an image*
-
 ## Contents
-[Motivation](#motivation) | [State of the Art](#state-of-the-art) | [Project Flow](#project-flow) | [Timeline](#timeline) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [The Process](#the-process) | [The Solution](#the-solution) | [Plans for Improvement](#plans-for-improvement)
+[Motivation](#motivation) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art)| [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
 
 
 ## Motivation
@@ -10,10 +7,9 @@ In a photo, closed eyes can occur for a number of reasons, such as the blinding 
 
 Especially juxtaposed with other state of the art options, our solution is quick and easy, and does not require a huge bank of photos or complicated and time consuming AI functionality. We would call it the 'perfect balance' between cost and effectiveness.
 
-## Project Flow
+## Implementation
 ![Project Flow Diagram](img/process/project-flow.png)
 
-## Implementation
 Code may be accessed on Github at [All-Eyes](https://github.com/elliotBraem/all-eyes).
 
 ## Results
@@ -92,7 +88,6 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 
 ![Eye Point Formula](img/process/formula.jpg)
 
-TBC
 
 ![6 Critical Eye Points](img/process/close_eye_detect.jpg)
 
@@ -100,14 +95,7 @@ TBC
 
 ![Connor Eyes Replaced](img/process/connor-replacement.png)
 
-![Initial inpainting](img/process/inpainting-man.png)
-
-## The Solution
-
-TODO
-
-
-
+![Initial inpainting](img/process/inpaint-man.png)
 
 ## Plans for Improvement
 There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes with our project.
