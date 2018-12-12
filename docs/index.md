@@ -2,7 +2,7 @@
 #### *A python application able to detect and replace closed eyes in an image*
 
 ## Contents
-[Motivation](#motivation) | [State of the Art](#state-of-the-art) | [Project Flow](#project-flow) | [Timeline](#timeline) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [The Process](#the-process) | [The Solution](#the-solution) | [Plans for Improvement](#plans-for-improvement)
+[Motivation](#motivation) | [Project Flow](#project-flow)  | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art)| [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
 
 
 ## Motivation
@@ -92,7 +92,6 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 
 ![Eye Point Formula](img/process/formula.jpg)
 
-TBC
 
 ![6 Critical Eye Points](img/process/close_eye_detect.jpg)
 
@@ -100,14 +99,7 @@ TBC
 
 ![Connor Eyes Replaced](img/process/connor-replacement.png)
 
-![Initial inpainting](img/process/inpainting-man.png)
-
-## The Solution
-
-TODO
-
-
-
+![Initial inpainting](img/process/inpaint-man.png)
 
 ## Plans for Improvement
 There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes with our project.
