@@ -41,7 +41,7 @@ After installing the project:
 
 2. Run the following command:
 ```
-	python face_detect.py [-b base image]
+	python all_eyes [-b base image] [-i image directory]
 ```
 
 ## Contributing
