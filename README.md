@@ -59,8 +59,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 - [X] Inpaint the replacment eye
 - [ ] Improved, natural inpainting
 
-Misc:
-- [ ] auto inject resources/shape_predictor_68_face_landmarks.dat
 ## Authors
 
 * **Elliot Braem**
