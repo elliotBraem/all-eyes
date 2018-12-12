@@ -1,5 +1,5 @@
 ## Contents
-[Motivation](#motivation) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art) | [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
+[Motivation](#motivation) | [Implementation](#implementation) | [Results](#results) | [The Team](#the-team) | [Timeline](#timeline) | [State of the Art](#state-of-the-art)| [The Process](#the-process) | [Plans for Improvement](#plans-for-improvement)
 
 
 ## Motivation
@@ -63,11 +63,11 @@ See references: [What a Future: Google Photos New Feature](http://www.whatafutur
 
 ![Faces Detected](img/process/initial_detection.jpg)
 
-In order to get a feel for the project, we first implemented a preliminary face detection using Haar Cascade, as provided by Python OpenCV. Haar Cascade is based on the Viola-Jones Object Detection Algorithm, which is trained a large set of positives and negatives, then uses certain features to determine if an object is detected. The detectMuliScale parameter must be tuned in order to detect all objects in an image, but does not always work from image-to-image.
+In order to get a feel for the project, we first implemented a preliminary face detection using Haar Cascade, as provided by Python OpenCV. Haar Cascade is based on the Viola-Jones Object Detection Algorithm, which is trained on a large set of positives and negatives, then uses certain features to determine if an object is detected. This algorithm is available through an openCV method, but one of the parameters, detectMuliScale, must be tuned in order to detect all objects in an image. Since detectMultiScale is dependent on the image, the same value does not always work from image-to-image. A more robust approach would be necessary.
 
 ![Simple Features](img/process/features.jpg)
 
-In most cases, Haar Cascade was able to detect all of the faces in a given image, however, false positives were also common. Moreover, because eyes are more abstract and less clear than faces, the Haar Cascade failed to detect them most of the time.
+In most cases, Haar Cascade was able to detect all of the faces in a given image, however, false positives were also common. Moreover, because eyes are more abstract and less clear than faces, the Haar Cascade failed to detect them most of the time. Knowing that this project relies on identifying eyes in an image, this too required a more robust approach.
 
 See tutorial for Haar Cascade as provided by Python OpenCV [here](https://docs.opencv.org/3.4/d7/d8b/tutorial_py_face_detection.html).
 
@@ -76,7 +76,9 @@ See tutorial for Haar Cascade as provided by Python OpenCV [here](https://docs.o
 
 ![dlib Facial Detection](img/process/dlib_detection.jpg)
 
-In order to improve accuracy, we converted to a HOG-Based face detection which proved to be more robust in detecting faces and had less false-positives. Once the face is detected, we use a predictor to identify facial features. It identifies facial features relative to their position on the face and is much more reliable since, for every face detected, two eyes are always detected as well.
+In order to improve detection accuracy, we converted to a Histogram of Oriented Gradients, or HOG, based face detection. This proved to be more robust in detecting faces and had less false-positives. This method uses shapes and gradients to detect a face rather than solely lighting, so it was more effective in our application. It also does not have to be tuned to the image, so it is also more universal which is important for an application of our scale.
+
+Once the face is detected, we used a predictor to identify facial features. The predictor predicts where facial features may lay relative to their position on the face, then identifies the feature in this area. This is much more reliable than the Haar Cascade method since, for every face detected, two eyes are always detected as well. Unfortunately, a trade off is that this method is less effective on profiles, since half of the "predictable" face is visible.
 
 ![dlib Facial Landmarks](img/process/feature_points.jpg)
 
@@ -86,7 +88,7 @@ See tutorial for dlib's facial landmark detector [here](https://www.pyimagesearc
 
 ![Open/Closed Eye Detection](img/process/open_eye_detect.jpg)
 
-We went through several different methods when trying to determine if eyes were open or closed. First, we attempted using Hough Circles to try and recognize the shapes found in open eyes, this worked sometimes, but often wasn't able to find meaningful circles in eyes that were open. We also attempted using the colors within the region of the eye checking for varying amounts of white or other color pixels, this too worked somewhat inconsistently and was later reworked. We finally arrived on a solution that gave us the most consistent results, using the shape of the region of the eye to allow us to the determine very consistently state of the detected eye.
+We went through several different methods when trying to determine if eyes were open or closed. First, we attempted using Hough Circles to try and recognize the shapes found in open eyes. This worked sometimes, but often wasn't able to find meaningful circles in eyes that were open. We also attempted using the colors within the region of the eye checking for varying amounts of white or other color pixels, this too worked somewhat inconsistently and was later reworked. We finally arrived on a solution that gave us the most consistent results, using the shape of the region of the eye to allow us to very consistently determine the state of the detected eye.
 
 Given dlib's six point eye area, we are able to determine whether an eye is open or not based on the ratio of the top of the eye to the bottom. We ran many images through our detection and found a threshold ratio we decided to use when filtering results of eyes as open or closed. Relying on the regions described as holding the eye allowed us great results and performed well in a great variety of lightings and sub optimal angles.
 
@@ -98,18 +100,19 @@ Given dlib's six point eye area, we are able to determine whether an eye is open
 
 #### **Replacing the Eyes**
 
-Several steps were necessary to allow us to achieve our end goal of finding and replacing closed eyes. After finding all the faces in the base image, and determining the faces with closed eyes that needed to be swapped. All faces in the images in the source directory were also analyzed and stored in a matrix. We used the similarity of these images and the locations of the faces to determine suitable matches for closed and open eyes.
+Several steps were necessary to allow us to achieve our end goal of finding and replacing closed eyes. After finding all the faces in the base image and determining the faces with closed eyes that needed to be swapped, all faces in the images in the source directory were also analyzed and stored in a matrix. We used the similarity of these images and the locations of the faces to determine suitable matches for closed and open eyes.
 
-Once a match is found we took the eyes from the open eye image, and placed them in a sensible place on the base image, we tried many approaches to make this look natrual and produce consistent results, and were ultimately only moderately successful with this. While we were able to consistently determine closed/open eyes, locate, and match faces, placing and painting them onto the new image proved to be a relatively difficult task where we had varying degrees of success.
+Once a match was found, we took the eyes from the open eye image, and placed them in a sensible position on the base image, we tried many approaches to make this look natural and produce consistent results, but we were ultimately only moderately successful with this. While we were able to consistently determine closed/open eyes and locate and match faces, placing and painting the eyes onto the new image proved to be a relatively difficult task where we had varying degrees of success.
 
-We used several methods of actually placing the eyes on the new face, from just simply putting the pixels of the new eyes on the base image, and using blur, masking, and blending methods to allow this to look more natrual. There were some images where certain strategies worked better and more consistently, and others where they did not. All in all this was a learning process that could definitely be improved, and provided a great insight into the intricicies of making believable and seamless modifications to an image.
+We used several methods of actually placing the eyes on the new face, from just simply putting the pixels of the new eyes on the base image, to using blur, masking, and blending methods to achieve a more natrual look. There were some images where certain strategies worked better and more consistently, and others where they did not. All in all this was a learning process that could definitely be improved, and provided a great insight into the intricicies of making believable and seamless modifications to an image.
 
 ![Connor Eyes Replaced](img/process/connor-replacement.png)
 
+Using blur, a mask, a poisson blending, we achieved an example of a semi-convincing replacement.
 ![Initial inpainting](img/process/inpaint-man.png)
 
 ## Plans for Improvement
-There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes with our project.
+There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes in our project.
 
 Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes. We believe that we could spend a lot more time, and iteratively improve our process in order to continually make improvements to the consistency and believability of our applications replacement painting.
 
