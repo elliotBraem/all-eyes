@@ -84,7 +84,9 @@ See tutorial for dlib's facial landmark detector [here](https://www.pyimagesearc
 
 ![Open/Closed Eye Detection](img/process/open_eye_detect.jpg)
 
-Given dlib's six point eye area, we are able to determine whether an eye is open or not based on the ratio of the top of the eye to the bottom. Given formula and re ....... ????
+We went through several different methods when trying to determine if eyes were open or closed. First, we attempted using Hough Circles to try and recognize the shapes found in open eyes, this worked sometimes, but often wasn't able to find meaningful circles in eyes that were open. We also attempted using the colors within the region of the eye checking for varying amounts of white or other color pixels, this too worked somewhat inconsistently and was later reworked. We finally arrived on a solution that gave us the most consistent results, using the shape of the region of the eye to allow us to the determine very consistently state of the detected eye.
+
+Given dlib's six point eye area, we are able to determine whether an eye is open or not based on the ratio of the top of the eye to the bottom. We ran many images through our detection and found a threshold ratio we decided to use when filtering results of eyes as open or closed. Relying on the regions described as holding the eye allowed us great results and performed well in a great variety of lightings and sub optimal angles.
 
 ![Eye Point Formula](img/process/formula.jpg)
 
