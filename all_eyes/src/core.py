@@ -27,6 +27,7 @@ def main():
     ap = argparse.ArgumentParser()
 
     ap.add_argument("-b", "--base-image", required=False, help="image to use as base")
+    ap.add_argument("-i", "--images-directory", required=False, help="directory containing input images")
     args = vars(ap.parse_args())
 
     # load the images
