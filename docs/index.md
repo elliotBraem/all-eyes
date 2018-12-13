@@ -112,7 +112,7 @@ Using blur, a mask, a poisson blending, we achieved an example of a semi-convinc
 ![Initial inpainting](img/process/inpaint-man.png)
 
 ## Plans for Improvement
-There are a lot of similar improvements to replacing eyes that can be done to photos. Smiles, and other facial features could be swapped on a face, using a similar method and given the same detection process we use. Because of how we chose to implement our solution, improving inpainting and matching could be used universally, and the same functions we wrote could swap many different features, in differeny ways, successfully.
+There are a lot of similar improvements to replacing eyes that can be done to photos. Smiles, and other facial features could be swapped on a face, using a similar method and given the same detection process we use. Because of how we chose to implement our solution, improving inpainting and matching could be used across a wide bredth of features, and the same functions we wrote could swap many different features, in different ways, successfully.
 
 Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes. We believe that we could spend a lot more time, and iteratively improve our process in order to continually make improvements to the consistency and believability of our applications replacement painting.
 
