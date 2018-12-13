@@ -76,7 +76,7 @@ See tutorial for Haar Cascade as provided by Python OpenCV [here](https://docs.o
 
 ![dlib Facial Detection](img/process/dlib_detection.jpg)
 
-In order to improve detection accuracy, we converted to a Histogram of Oriented Gradients, or HOG, based face detection. This proved to be more robust in detecting faces and had less false-positives. This method uses shapes and gradients to detect a face rather than solely lighting, so it was more effective in our application. It also does not have to be tuned to the image, so it is also more universal which is important for an application of our scale.
+In order to improve detection accuracy, we converted to a Histogram of Oriented Gradients, or HOG, based face detection. This proved to be more robust in detecting faces and had less false-positives. This method uses shapes and gradients to detect a face rather than solely lighting, so it was more effective in our application. It also does not have to be tuned to the image, so it is also more universal which is important for our our specific use case.
 
 Once the face is detected, we used a predictor to identify facial features. The predictor predicts where facial features may lay relative to their position on the face, then identifies the feature in this area. This is much more reliable than the Haar Cascade method since, for every face detected, two eyes are always detected as well. Unfortunately, a trade off is that this method is less effective on profiles, since half of the "predictable" face is visible.
 
@@ -112,10 +112,8 @@ Using blur, a mask, a poisson blending, we achieved an example of a semi-convinc
 ![Initial inpainting](img/process/inpaint-man.png)
 
 ## Plans for Improvement
-There is a lot to be done along the lines of editing photos based on a photo bank. Specifically with group pictures, it is not uncommon for a member of the group to not be smiling, which could be selected from the photo bank, superimposed onto the photo, then in-painted to look realistic, much like we have accomplished regarding eyes in our project.
+There are a lot of similar improvements to replacing eyes that can be done to photos. Smiles, and other facial features could be swapped on a face, using a similar method and given the same detection process we use. Because of how we chose to implement our solution, improving inpainting and matching could be used universally, and the same functions we wrote could swap many different features, in differeny ways, successfully.
 
 Of course, there are always improvements to be made in trying to get the most cost effective *realistic* results, which relies a lot on the intricacies of in-painting. A worth while improvement to pursue would be a general and time-efficient fix to the uncanny results of some of the superimposed eyes. We believe that we could spend a lot more time, and iteratively improve our process in order to continually make improvements to the consistency and believability of our applications replacement painting.
 
 Given more time we would have loved to implement a mesh face or triangulation of key points to allow us to even more accurately place eyes. This was attempted and worked on during our development but set aside for other features and not finished before the deadline. Doing this would improve our current applications eye placement, as well as allow us to use different source images when finding and replacing eyes. 
-
-
